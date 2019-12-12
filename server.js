@@ -24,7 +24,14 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-
+app.get("/api/timestamp/:date", function (req, res) {
+  const date_string = req.params.date;
+  const date = new Date(date_string);
+  if(date)
+  res.json({});
+  else
+    res.json({"error" : "Invalid Date"});
+});
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
